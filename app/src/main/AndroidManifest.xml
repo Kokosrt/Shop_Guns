@@ -21,9 +21,6 @@
             android:name=".Menu"
             android:exported="false" />
         <activity
-            android:name=".ListShop"
-            android:exported="false" />
-        <activity
             android:name=".SignIn"
             android:exported="false" />
         <activity

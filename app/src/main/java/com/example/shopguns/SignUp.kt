@@ -38,7 +38,7 @@ class SignUp : AppCompatActivity() {
         val userDbHelper = UserDatabaseHelper(this)
         val myPrefs = MyPrefs(this)
 
-        return if (userDbHelper.isLoginAvailable(login)) {
+        return if (userDbHelper.isLoginAvailable(login)) {//перевірка чи не зайнятий логін
             val userId = userDbHelper.addUser(user)
 
             // Збереження інформації про авторизацію в MyPrefs

@@ -9,7 +9,7 @@ import com.example.shopguns.models.Gun
 
 
 class GunDatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION) {
-
+//клас керування БД Guns
     companion object {
         private const val DATABASE_VERSION = 1
         private const val DATABASE_NAME = "guns_database"
@@ -24,7 +24,7 @@ class GunDatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_N
         private const val AVAILABILITY = "availability"
     }
 
-    override fun onCreate(db: SQLiteDatabase) {
+    override fun onCreate(db: SQLiteDatabase) {// створення таблиці якщо її не існує
         val CREATE_GUNS_TABLE = ("CREATE TABLE $TABLE_NAME ("
                 + "$GUNS_ID INTEGER PRIMARY KEY AUTOINCREMENT,"
                 + "$CODE_GOODS INTEGER NOT NULL,"
@@ -35,16 +35,16 @@ class GunDatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_N
                 + "UNIQUE($CODE_GOODS))")
         db.execSQL(CREATE_GUNS_TABLE)
         if (getGunsCount(db) == 0){
-        addGuns()
+        addGuns(db)
         }
     }
 
-    override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
+    override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) { //зміна версій БД
         db.execSQL("DROP TABLE IF EXISTS $TABLE_NAME")
         onCreate(db)
     }
     @SuppressLint("Range")
-    fun getGunsByAvailability(availability: Boolean): List<Gun> {
+    fun getGunsByAvailability(availability: Boolean): List<Gun> { //отримання доступної зброї
         val guns = mutableListOf<Gun>()
         val db = this.readableDatabase
 
@@ -73,7 +73,7 @@ class GunDatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_N
         return guns
     }
     @SuppressLint("Range")
-    fun getGunsAll(): List<Gun> {
+    fun getGunsAll(): List<Gun> { // це отримання всієї зброї
         val guns = mutableListOf<Gun>()
         val db = this.readableDatabase
 
@@ -100,7 +100,7 @@ class GunDatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_N
         return guns
     }
     //перевіряємо, чи база даних пуста
-    private fun getGunsCount(db: SQLiteDatabase?): Int {
+    private fun getGunsCount(db: SQLiteDatabase?): Int { //отримання кількості записів в базі даних
         val countQuery = "SELECT * FROM $TABLE_NAME"
         val cursor = db?.rawQuery(countQuery, null)
         val count = cursor?.count ?: 0
@@ -108,13 +108,13 @@ class GunDatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_N
         return count
     }
 
-    fun addGuns() { // додавання зброї
+    fun addGuns(db: SQLiteDatabase) { // додавання зброї
         val gun1 = Gun(1234, "Colt 1911", "Pistols", 5000, true)
         val gun2 = Gun(5678, "M4A1", "Assault Rifles", 10000, true)
         val gun3 = Gun(9101, "SPAS-12", "Shotguns", 8000, false)
         val gun4 = Gun(9201, "K-90", "Knife", 6000, true)
 
-        val db = this.writableDatabase
+
 
         val values = ContentValues()
         values.put(CODE_GOODS, gun1.codeGoods)
@@ -148,6 +148,5 @@ class GunDatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_N
 
         db.insert(TABLE_NAME, null, values)
 
-        db.close()
     }
 }

@@ -7,7 +7,7 @@ import android.database.sqlite.SQLiteOpenHelper
 import com.example.shopguns.models.User
 
 class UserDatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION) {
-
+//клас керування БД user
     companion object {
         private const val DATABASE_NAME = "users.db"
         private const val DATABASE_VERSION = 1
@@ -37,7 +37,7 @@ class UserDatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_
     override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
         // При оновленні бази даних можна виконати потрібні дії
     }
-    fun addUser(user: User): Long {
+    fun addUser(user: User): Long {//додавання користувача
         val db = this.writableDatabase
         val values = ContentValues()
         values.put(COLUMN_USER_FIRST_NAME, user.firstName)
@@ -48,7 +48,7 @@ class UserDatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_
         db.close()
         return id
     }
-    fun isLoginAvailable(login: String): Boolean {
+    fun isLoginAvailable(login: String): Boolean {//перевірка чи не зайнятий логін
         val db = this.readableDatabase
         val cursor = db.query(
             TABLE_USERS,
@@ -66,7 +66,7 @@ class UserDatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_
         return isAvailable
     }
     @SuppressLint("Range")
-    fun getUserById(id: Long): User? {
+    fun getUserById(id: Long): User? {//отримання даних користувача по ID
         val db = readableDatabase
         val cursor = db.query(TABLE_USERS, null, "$COLUMN_USER_ID=?", arrayOf(id.toString()), null, null, null)
         return if (cursor.moveToFirst()) {
@@ -81,7 +81,7 @@ class UserDatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_
     }
 
     @SuppressLint("Range")
-    fun getUserByLogin(login: String): User? {
+    fun getUserByLogin(login: String): User? {// отримання даних користувача по логіну
         val db = readableDatabase
         val cursor = db.query(TABLE_USERS, null, "$COLUMN_USER_LOGIN=?", arrayOf(login), null, null, null)
         val user = if (cursor.moveToFirst()) {

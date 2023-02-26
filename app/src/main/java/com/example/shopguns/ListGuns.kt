@@ -17,7 +17,7 @@ class ListGuns : AppCompatActivity() {
         val dbHelper = GunDatabaseHelper(this)
         val gunsList = dbHelper.getGunsAll()
 
-        for (i in gunsList.indices) {
+        for (i in gunsList.indices) {//заповнення таблиці
             val row = TableRow(this)
 
             val codeTextView = TextView(this)

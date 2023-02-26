@@ -31,7 +31,7 @@ class SignIn : AppCompatActivity() {
         val dbHelper = UserDatabaseHelper(this)
         val user = dbHelper.getUserByLogin(login)
 
-        return if (user != null && user.password == password) {
+        return if (user != null && user.password == password) {//перевірка введених даних
             val myPrefs = MyPrefs(this)
             myPrefs.userId = user.id
             myPrefs.isAuthorised = true

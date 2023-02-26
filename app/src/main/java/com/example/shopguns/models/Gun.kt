@@ -1,6 +1,7 @@
 package com.example.shopguns.models
 
 class Gun {
+    // клас який представляє дані зброї
     var id: Long = 0
     var codeGoods: Int = 0
     var name: String? = null
@@ -10,6 +11,7 @@ class Gun {
 
     constructor()
 
+    //створення об'єкту
     constructor(
         codeGoods: Int,
         name: String,
@@ -39,7 +41,7 @@ class Gun {
         this.price = price;
         this.isAvailable = isAvailable;
     }
-
+//виведення у текстовому вигляді
     override fun toString(): String {
         return "[  $name  |  $category  |  $price$  ]"
     }

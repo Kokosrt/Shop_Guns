@@ -1,6 +1,7 @@
 package com.example.shopguns.models
 
 class User {
+    // клас який представляє дані користувача
     var id: Long = 0
     var firstName: String? = null
     var lastName: String? = null
@@ -9,6 +10,7 @@ class User {
 
 
     constructor() {}
+    //створення об'єкта
     constructor(firstName: String?, lastName: String?, login: String?, password: String?) {
         this.firstName = firstName
         this.lastName = lastName
@@ -29,7 +31,7 @@ class User {
         this.login = login
         this.password = password
     }
-
+// виведення у текстовому вигляді
     override fun toString(): String {
         return "$firstName $lastName"
     }
