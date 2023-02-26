@@ -1,0 +1,27 @@
+<resources>
+    <string name="app_name">Shop Guns</string>
+    <string name="not_auth">Не авторизовано</string>
+    <string name="next">далі</string>
+    <string name="sign_in">ввійти</string>
+    <string name="sign_up">реєстрація</string>
+    <string name="log_out">вийти</string>
+
+    <string name="regist_text">Реєстація</string>
+
+    <string name="text_login">Login</string>
+    <string name="text_password">Password</string>
+    <string name="text_name">Ім\'я</string>
+    <string name="text_last_name">Прізвище</string>
+    <string name="button_reg">зареєструватись</string>
+    <string name="button_sign_in">ввійти</string>
+
+    <string name="sign_in_text">Вхід</string>
+
+    <string name="menu_titel">Виберіть вкладку</string>
+    <string name="list_guns">Cписок зброї</string>
+    <string name="sell_list">продана зброя</string>
+
+    <string name="list">CПИСОК ЗБРОЇ</string>
+    <string name="sell_guns_list">CПИСОК ПРОДАНОЇ ЗБРОЇ</string>
+
+</resources>
