@@ -6,4 +6,80 @@
     android:layout_height="match_parent"
     tools:context=".AddGuns">
 
+    <EditText
+        android:id="@+id/tUniqueCode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="212dp"
+        android:ems="10"
+        android:hint="@string/unique_number"
+        android:inputType="number"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/tNameGuns"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:ems="10"
+        android:hint="@string/name_guns"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="@+id/tUniqueCode"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/tUniqueCode"
+        app:layout_constraintTop_toBottomOf="@+id/tUniqueCode" />
+
+    <EditText
+        android:id="@+id/tCategories"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:ems="10"
+        android:hint="@string/categories_guns"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="@+id/tNameGuns"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/tNameGuns"
+        app:layout_constraintTop_toBottomOf="@+id/tNameGuns" />
+
+    <EditText
+        android:id="@+id/tPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:ems="10"
+        android:hint="@string/price_guns"
+        android:inputType="number"
+        app:layout_constraintEnd_toEndOf="@+id/tCategories"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/tCategories"
+        app:layout_constraintTop_toBottomOf="@+id/tCategories" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="@string/done"
+        app:layout_constraintEnd_toEndOf="@+id/tPrice"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/tPrice"
+        app:layout_constraintTop_toBottomOf="@+id/tPrice" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="183dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="140dp"
+        android:text="@string/text_znachen"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="@+id/tUniqueCode"
+        app:layout_constraintHorizontal_bias="0.481"
+        app:layout_constraintStart_toStartOf="@+id/tUniqueCode"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

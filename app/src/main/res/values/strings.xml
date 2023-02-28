@@ -27,4 +27,13 @@
     <string name="add_gun">додати зброю</string>
     <string name="sell_gun">продати зброю</string>
 
+    <string name="unique_number">Унікальний номер</string>
+    <string name="name_guns">Назва </string>
+    <string name="categories_guns">Категорія</string>
+    <string name="price_guns">Ціна</string>
+
+    <string name="done">готово</string>
+
+    <string name="text_znachen">Додайте зброю</string>
+
 </resources>
