@@ -27,7 +27,7 @@ class GunDatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_N
     override fun onCreate(db: SQLiteDatabase) {// створення таблиці якщо її не існує
         val CREATE_GUNS_TABLE = ("CREATE TABLE $TABLE_NAME ("
                 + "$GUNS_ID INTEGER PRIMARY KEY AUTOINCREMENT,"
-                + "$CODE_GOODS INTEGER NOT NULL,"
+                + "$CODE_GOODS INTEGER NOT NULL UNIQUE,"
                 + "$NAME_GUNS TEXT NOT NULL,"
                 + "$CATEGORIES TEXT NOT NULL,"
                 + "$PRICE INTEGER DEFAULT 1000,"
@@ -107,7 +107,31 @@ class GunDatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_N
         cursor?.close()
         return count
     }
+    @SuppressLint("Range")
+    fun isCodeGoodsUnique(codeGoods: Int): Boolean { // перевірка чи не повторюється код
+        val db = this.readableDatabase
+        val selectQuery = "SELECT $CODE_GOODS FROM $TABLE_NAME WHERE $CODE_GOODS = ?"
+        val cursor = db.rawQuery(selectQuery, arrayOf(codeGoods.toString()))
 
+        val isUnique = cursor.count == 0
+        cursor.close()
+        db.close()
+        return isUnique
+    }
+
+    fun addNewGun(gun: Gun) { // створення нової зброї
+        val db = this.writableDatabase
+        val values = ContentValues()
+
+        values.put(CODE_GOODS, gun.codeGoods)
+        values.put(NAME_GUNS, gun.name)
+        values.put(CATEGORIES, gun.category)
+        values.put(PRICE, gun.price)
+        values.put(AVAILABILITY, if (gun.isAvailable) 1 else 0)
+
+        db.insert(TABLE_NAME, null, values)
+        db.close()
+    }
     fun addGuns(db: SQLiteDatabase) { // додавання зброї
         val gun1 = Gun(1234, "Colt 1911", "Pistols", 5000, true)
         val gun2 = Gun(5678, "M4A1", "Assault Rifles", 10000, true)
