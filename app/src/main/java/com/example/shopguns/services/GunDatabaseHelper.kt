@@ -132,6 +132,15 @@ class GunDatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_N
         db.insert(TABLE_NAME, null, values)
         db.close()
     }
+
+    fun updateGunAvailability(gunId: Long, availability: Boolean) { // змінює статус зброї (доступна чи ні)
+        val db = this.writableDatabase
+        val values = ContentValues()
+        values.put(AVAILABILITY, if (availability) 1 else 0)
+        db.update(TABLE_NAME, values, "$GUNS_ID = ?", arrayOf(gunId.toString()))
+        db.close()
+    }
+
     fun addGuns(db: SQLiteDatabase) { // додавання зброї
         val gun1 = Gun(1234, "Colt 1911", "Pistols", 5000, true)
         val gun2 = Gun(5678, "M4A1", "Assault Rifles", 10000, true)
