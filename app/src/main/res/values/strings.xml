@@ -24,4 +24,7 @@
     <string name="list">CПИСОК ЗБРОЇ</string>
     <string name="sell_guns_list">CПИСОК ПРОДАНОЇ ЗБРОЇ</string>
 
+    <string name="add_gun">додати зброю</string>
+    <string name="sell_gun">продати зброю</string>
+
 </resources>

@@ -19,5 +19,13 @@ class Menu : AppCompatActivity() {
         val intent = Intent(this, SellGuns::class.java)
         startActivity(intent)
     }
+    fun onClickAddGun(view: View){//список проданої зброї
+        val intent = Intent(this, AddGuns::class.java)
+        startActivity(intent)
+    }
+    fun onClickGunsSellery(view: View){//список проданої зброї
+        val intent = Intent(this, GunsSellery::class.java)
+        startActivity(intent)
+    }
 
 }
