@@ -44,6 +44,7 @@ class GunsSellery : AppCompatActivity() {
         }
     }
 
+
     fun onClickComplete(view: View) {
         val selectedGun = spinner.selectedItem as Gun
         dbHelper.updateGunAvailability(selectedGun.id, false)
