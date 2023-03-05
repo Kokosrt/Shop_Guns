@@ -9,7 +9,7 @@ import com.example.shopguns.models.Gun
 
 
 class GunDatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION) {
-//клас керування БД Guns
+    //клас керування БД Guns
     companion object {
         private const val DATABASE_VERSION = 1
         private const val DATABASE_NAME = "guns_database"
@@ -34,10 +34,11 @@ class GunDatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_N
                 + "$AVAILABILITY INTEGER DEFAULT 1,"
                 + "UNIQUE($CODE_GOODS))")
         db.execSQL(CREATE_GUNS_TABLE)
-        if (getGunsCount(db) == 0){
-        addGuns(db)
+        if (getGunsCount(db) == 0) {
+            addGuns(db)
         }
     }
+
 
     override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) { //зміна версій БД
         db.execSQL("DROP TABLE IF EXISTS $TABLE_NAME")
