@@ -27,5 +27,9 @@ class Menu : AppCompatActivity() {
         val intent = Intent(this, GunsSellery::class.java)
         startActivity(intent)
     }
+    fun onClickBackGuns(view: View) {//список поверненої зброї
+        val intent = Intent(this, BackGuns::class.java)
+        startActivity(intent)
+    }
 
 }

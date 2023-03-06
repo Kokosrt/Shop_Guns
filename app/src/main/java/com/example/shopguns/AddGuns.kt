@@ -19,8 +19,7 @@ class AddGuns : AppCompatActivity() {
     }
 
     fun onClickAddGuns(view: View){ //додаєм зброю
-        val intent = Intent(this, Menu::class.java)
-        startActivity(intent)
+
 
         val uniqueCode = bindingClass.tUniqueCode.text.toString().toInt()
         val nameGuns = bindingClass.tNameGuns.text.toString()
@@ -32,7 +31,8 @@ class AddGuns : AppCompatActivity() {
         val gunDatabaseHelper = GunDatabaseHelper(this)
         if (gunDatabaseHelper.isCodeGoodsUnique(uniqueCode)) {
             gunDatabaseHelper.addNewGun(newGun)
-
+                // val intent = Intent(this, Menu::class.java)
+            //startActivity(intent)
             finish()
 
         } else {
