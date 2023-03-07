@@ -78,9 +78,9 @@ class BackGuns : AppCompatActivity() {
         searchView.clearFocus()
     }
 
-    fun onClickBackGuns(view: View) {
+    fun onClickComplete(view: View) {
         dbHelper.updateGunAvailability(selectedGun.id, true)
-        Toast.makeText(this, "Продано: " + selectedGun.name, Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, "Повернено: " + selectedGun.name, Toast.LENGTH_SHORT).show()
         finish()
     }
 }
